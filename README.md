@@ -32,7 +32,10 @@ Following are the supported command line arguments:
 |  `-do`, `--drop_out` |     0.3    | Dropout value. |
 |  `-a`, `--activation_function` |     GELU    | choices = [RELU, GELU, SELU, MISH]. Activation function to use |
 \
-3. <>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TESTING INSTRUCIONS GO HERE
+3. To evaluate the model, use the following command:
+```python
+trainer.test(obj,  test_dataloader)
+```
 ### Dataset and Data Loaders
 The iNaturalist 12K dataset is loaded from the /kaggle/input/inaturalist12k/Data/inaturalist_12K/train and /kaggle/input/inaturalist12k/Data/inaturalist_12K/val directories for training and testing, respectively. Depending on the value of the data_augmentation parameter in the project configuration, either transform or transform_augmented is applied to the training set. The testing set always uses transform.
 
@@ -42,8 +45,9 @@ The dataset is split into training and validation sets using a ratio of 80:20. D
 Two sets of data transformations are defined: transform and transform_augmented. Both transform the images to have a size of 256x256 pixels and convert them to tensors. However, transform_augmented applies additional data augmentation techniques to the images, including random cropping, flipping, and rotating. Both transformations then normalize the images using the mean and standard deviation values for the ImageNet dataset.
     
 ### Methods
-The training_step method calculates the loss and accuracy of the model during training and logs them using wandb_logger. Similarly, the validation_step method calculates the loss and accuracy of the model during validation and logs them. Finally, the test_step method calculates the loss and accuracy of the model during testing.
-
+The training_step method calculates the loss and accuracy of the model during training and logs them using wandb_logger. 
+Similarly, the validation_step method calculates the loss and accuracy of the model during validation and logs them. 
+Finally, the test_step method calculates the loss and accuracy of the model during testing.
 The configure_optimizers method initializes the Adam optimizer with a specified learning rate.
 
 The main code initializes an instance of the CNNModel class with the specified hyperparameters and trains the model using the fit method of Trainer class provided by PyTorch Lightning. The wandb_logger is used to log the training and validation metrics to the Weights & Biases platform. The max_epochs and devices can also be specified as command line arguments.
