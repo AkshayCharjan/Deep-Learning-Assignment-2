@@ -12,8 +12,8 @@ This code file implements a convolutional neural network (CNN) using PyTorch's L
 !unzip Asg2_Dataset.zip
 !pip install wandb
 ```
-
-2. To train the model run train.py using the below command: 
+2. Give proper path for the dataset.
+3. To train the model run train.py using the below command: 
 ```python
 python train.py --wandb_entity myname --wandb_project myprojectname
 ```
@@ -32,7 +32,7 @@ Following are the supported command line arguments:
 |  `-do`, `--drop_out` |     0.3    | Dropout value. |
 |  `-a`, `--activation_function` |     GELU    | choices = [RELU, GELU, SELU, MISH]. Activation function to use |
 \
-3. To evaluate the model, use the following command:
+4. To evaluate the model, use the following command:
 ```python
 trainer.test(obj,  test_dataloader)
 ```
