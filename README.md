@@ -52,8 +52,8 @@ The main code initializes an instance of the CNNModel class with the specified h
 The following code sets up a configuration for a parameter sweep using the wandb.sweep function. The sweep configuration is defined as a dictionary sweep_config.
 ```python
 sweep_config = {
-    'method': 'bayes', # or 'grid'
-    'metric': {'name': 'val_loss', 'goal': 'minimize'},
+    'method': 'bayes',
+    'metric': {'name': 'val accuracy', 'goal': 'maximize'},
     'parameters': {
         'drop_out': {"values": [0.2, 0.3]},
         "activation_function": {
@@ -65,8 +65,9 @@ sweep_config = {
           }
           ,
         "filter_organisation":{
-            "values":[[8,8,8,8,8],[16,16,16,16,16],[32,32,32,32,32],[64,64,64,64,64]]
+            "values":["[4,8,16,32,64],[64,32,16,8,4],[32,32,32,32,32],[64,64,64,64,64]"]
         },
+       
         "data_augmentation":{
             "values":["Yes","No"]
         },
