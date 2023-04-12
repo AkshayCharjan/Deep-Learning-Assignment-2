@@ -27,7 +27,7 @@ Following are the supported command line arguments:
 |  `-lr`, `--learning_rate` |     0.0001    | Learning rate used to optimize model parameters. |
 |  `-fz`, `--filter_size` |    64     | Filter size used by convolution layer. |
 |  `-fo`, `--filter_organisation` |    same     | choices= [same,half,double] Filter organisation used by convolution layer. Using same would give the same filter size to all the layers, using half would keep halving the filter size in the successive layers and using double would mean doubling the filter size in the successive layers.|
-|  `-da`, `--DataAugmentation` |     False    | choices = [Yes, No]. Perform data augmentation or not |
+|  `-da`, `--DataAugmentation` |     No    | choices = [Yes, No]. Perform data augmentation or not |
 |  `-bn`, `--batch_normalisation` |     No    | choices = [Yes, No]. Perform batchNormalisation or not |
 |  `-do`, `--drop_out` |     0.3    | Dropout value. |
 |  `-a`, `--activation_function` |     GELU    | choices = [RELU, GELU, SELU, MISH]. Activation function to use |
