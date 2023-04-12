@@ -109,5 +109,7 @@ sweep_id = wandb.sweep(sweep_config, project=pName)
 ##### Use the wandb.agent function to run the hyperparameter sweep with the given sweep_id and sweep function
 wandb.agent(sweep_id, sweep)
 
+Report Link: https://wandb.ai/cs22m008/Assignment%202%20Part%20A%20main%204/reports/CS6910-Assignment-2--Vmlldzo0MDMzMjY2
+
 
 
