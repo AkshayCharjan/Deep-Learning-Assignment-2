@@ -37,7 +37,10 @@ Following are the supported command line arguments:
 trainer.test(obj,  test_dataloader)
 ```
 ### Dataset and Data Loaders
-The iNaturalist 12K dataset is loaded from the /kaggle/input/inaturalist12k/Data/inaturalist_12K/train and /kaggle/input/inaturalist12k/Data/inaturalist_12K/val directories for training and testing, respectively. Depending on the value of the data_augmentation parameter in the project configuration, either transform or transform_augmented is applied to the training set. The testing set always uses transform.
+The iNaturalist 12K dataset is loaded from the \
+/kaggle/input/inaturalist12k/Data/inaturalist_12K/train  and \
+/kaggle/input/inaturalist12k/Data/inaturalist_12K/val \
+directories for training and testing (if we are using kaggle), respectively. Depending on the value of the data_augmentation parameter in the project configuration, either transform or transform_augmented is applied to the training set. The testing set always uses transform.
 
 The dataset is split into training and validation sets using a ratio of 80:20. Data loader objects are created for both sets, with a batch size of 64 for both and the training set being shuffled.
     
