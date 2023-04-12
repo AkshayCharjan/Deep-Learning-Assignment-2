@@ -3,6 +3,20 @@
 ## Part A
 
 This code file implements a convolutional neural network (CNN) using PyTorch's Lightning library. It contains code for training a deep learning model for image classification using the iNaturalist 12K dataset. The CNN architecture consists of 5 convolutional layers followed by max pooling, batch normalization, dropout, and a fully connected layer with softmax activation. The hyperparameters of the model such as activation function, batch normalization, data augmentation, filter organization, and dropout rate can be specified as command line arguments.\
+
+### Instructions to train and evaluate the model
+1. Install the required libraries:
+```python
+!pip install pytorch_lightning
+!unzip Asg2_Dataset.zip
+!pip install wandb
+```
+
+2.
+
+
+
+
 <<<<<<<<<<< add args cmd here >>>>>>>>>>>>>>>>>
 
 
