@@ -8,18 +8,31 @@ This code file implements a convolutional neural network (CNN) using PyTorch's L
 1. Install the required libraries:
 ```python
 !pip install pytorch_lightning
+!curl -SL https://storage.googleapis.com/wandb_datasets/nature_12K.zip > Asg2_Dataset.zip
 !unzip Asg2_Dataset.zip
 !pip install wandb
 ```
 
-2.
+2. To train the model run train.py using the below command: 
+```python
+python train.py --wandb_entity myname --wandb_project myprojectname
+```
+Following are the supported command line arguments:
 
-
-
-
-<<<<<<<<<<< add args cmd here >>>>>>>>>>>>>>>>>
-
-
+|           Name           | Default Value | Description                                                               |
+| :----------------------: | :-----------: | :------------------------------------------------------------------------ |
+| `-wp`, `--wandb_project` | myprojectname | Project name used to track experiments in Weights & Biases dashboard      |
+|  `-we`, `--wandb_entity` |     myname    | Wandb Entity used to track experiments in the Weights & Biases dashboard. |
+|  `-e`, `--epochs` |     10    | Number of epochs to train neural network.. |
+|  `-lr`, `--learning_rate` |     0.0001    | Learning rate used to optimize model parameters. |
+|  `-fz`, `--filter_size` |    64     | Filter size used by convolution layer. |
+|  `-fo`, `--filter_organisation` |    same     | choices= [same,half,double] Filter organisation used by convolution layer. Using same would give the same filter size to all the layers, using half would keep halving the filter size in the successive layers and using double would mean doubling the filter size in the successive layers.|
+|  `-da`, `--DataAugmentation` |     False    | choices = [Yes, No]. Perform data augmentation or not |
+|  `-bn`, `--batch_normalisation` |     No    | choices = [Yes, No]. Perform batchNormalisation or not |
+|  `-do`, `--drop_out` |     0.3    | Dropout value. |
+|  `-a`, `--activation_function` |     GELU    | choices = [RELU, GELU, SELU, MISH]. Activation function to use |
+\
+3. <>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TESTING INSTRUCIONS GO HERE
 ### Dataset and Data Loaders
 The iNaturalist 12K dataset is loaded from the /kaggle/input/inaturalist12k/Data/inaturalist_12K/train and /kaggle/input/inaturalist12k/Data/inaturalist_12K/val directories for training and testing, respectively. Depending on the value of the data_augmentation parameter in the project configuration, either transform or transform_augmented is applied to the training set. The testing set always uses transform.
 
@@ -72,14 +85,14 @@ The method key specifies the method used for the sweep. In this case, it is set 
 The metric key is a dictionary that defines the metric to optimize. In this case, the metric is the validation loss, and the goal is to minimize it.
 
 The parameters key is a dictionary that defines the hyperparameters to sweep over. The hyperparameters include:
+**drop_out**: the dropout rate\
+**activation_function**: the activation function to use in the model\
+**learning_rate**: the learning rate for the optimizer\
+**filter_organisation**: the number of filters for each convolutional layer in the model\
+**data_augmentation**: whether to use data augmentation or not\
+**batch_normalization**: whether to use batch normalization or not\
+**epochs**: the number of epochs to train the model for\
 
-drop_out: the dropout rate
-activation_function: the activation function to use in the model
-learning_rate: the learning rate for the optimizer
-filter_organisation: the number of filters for each convolutional layer in the model
-data_augmentation: whether to use data augmentation or not
-batch_normalization: whether to use batch normalization or not
-epochs: the number of epochs to train the model for
 For each hyperparameter, a list of possible values to sweep over is provided using the values key. The sweep will test different combinations of hyperparameters and record the results in Weights and Biases (W&B) for analysis.
 
 ##### Use the wandb.sweep function to set up the hyperparameter sweep
